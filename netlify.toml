@@ -1,0 +1,17 @@
+[build]
+command = "npm run build:netlify"
+functions = ".output/server"
+publish = "dist"
+
+[build.environment]
+NODE_VERSION = "22"
+
+[[headers]]
+for = "/assets/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/"
+[headers.values]
+Cache-Control = "public, max-age=3600, must-revalidate"
